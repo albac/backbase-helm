@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "backbase-helm-tomcat.fullname" . }}
+  labels:
+    {{- include "backbase-helm-tomcat.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "backbase-helm-tomcat.selectorLabels" . | nindent 4 }}
