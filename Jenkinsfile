@@ -14,7 +14,7 @@ pipeline{
         stage("Docker Build and Push"){
             steps{
                 script{ FAILED_STAGE=env.STAGE_NAME }
-                dockerBuildAndPush()
+                dockerLogin()
             }
         }
         // stage("DEV_DEPLOY") {
