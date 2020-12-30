@@ -49,14 +49,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "backbase-helm-tomcat.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "backbase-helm-tomcat.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "backbase-helm-tomcat.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
