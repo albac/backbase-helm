@@ -4,7 +4,7 @@ image:
   repository: 197398802565.dkr.ecr.us-east-1.amazonaws.com/backbase-tomcat
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
