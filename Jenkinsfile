@@ -1,7 +1,7 @@
 #!groovy
 import groovy.json.JsonOutput
 
-// Global & Input Variables 
+// Global Variables 
 REGION = 'us-east-1'
 REGISTRY_URL = '197398802565.dkr.ecr.us-east-1.amazonaws.com' //AWS-ECR Registry URL
 IMAGE_NAME = 'backbase-tomcat' // Global Docker Image & App Name
@@ -9,7 +9,6 @@ REPO_URL = 'https://github.com/zerosinitiative/backbase-helm.git' // Repositroy 
 TAG = 'latest'
 TOPIC_ARN = 'arn:aws:sns:us-east-1:197398802565:backbase-build-notif'
 
-// Pipeline Starts ------------------------------------------------------------------------------------------------------------------------
 pipeline{
     agent any
     stages{
@@ -54,9 +53,6 @@ pipeline{
         }
     }
 }  
-// Pipeline Ends ------------------------------------------------------------------------------------------------------------------------
-
-// Docker Building and Pushing the Image to AWS-ECR 
 
 def dockerLogin() {
     sh(script:"aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${REGISTRY_URL}")
