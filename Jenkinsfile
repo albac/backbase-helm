@@ -16,31 +16,37 @@ pipeline{
         stage("Docker Login To ECR"){
             steps{
                 dockerLogin()
+                notifySNS()
             }
         }
         stage("Docker Build Image") {
             steps {
                 dockerBuildImage()
+                notifySNS()
             }
         }
         stage("Docker Image Tag") {
             steps {
                 dockerTag()
+                notifySNS()
             }
         }
         stage("Docker Image Scanning") {
             steps {
                 dockerImageScanning()
+                notifySNS()
             }
         }
         stage("Docker Push To ECR") {
             steps {
                 dockerImagePushToECR()
+                notifySNS()
             }
         }
         stage("Deploy Helm App") {
             steps {
                 deployHelmApp()
+                notifySNS()
             }
         }
         stage("Cleanup") {
