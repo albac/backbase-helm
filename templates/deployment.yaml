@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "backbase-helm-tomcat.labels" . | nindent 4 }}
 spec:
-{{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-{{- end }}
   selector:
     matchLabels:
       {{- include "backbase-helm-tomcat.selectorLabels" . | nindent 6 }}
