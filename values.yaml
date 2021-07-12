@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: 197398802565.dkr.ecr.us-east-1.amazonaws.com/backbase-tomcat
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -18,7 +18,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  targetPort: 8080
+  targetPort: 80
   port: 80
 
 resources: {}
