@@ -53,10 +53,10 @@ phases:
       - kubectl get configmap aws-auth -o yaml -n kube-system
       - kubectl version
       - echo Get EKS nodes...
-      - kubectl get nodes
+      - kubectl get nodes,services
       - echo Push to ECR
       - docker push $REGISTRY_URL/$IMAGE_NAME:$TAG
-      - helm upgrade --wait --atomic --install $IMAGE_NAME .
+      - helm upgrade --wait --install $IMAGE_NAME .
       - echo Cleaning up
       - docker image prune -af
 
