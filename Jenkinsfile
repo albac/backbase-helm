@@ -75,7 +75,7 @@ def dockerImagePushToECR() {
 }
 
 def deployHelmApp(){
-    sh(script:"helm upgrade --wait --atomic --install ${IMAGE_NAME} .")
+    sh(script:"helm upgrade --debug --wait --atomic --install ${IMAGE_NAME} .")
 }
 
 def notifySNS(){
