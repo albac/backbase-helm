@@ -52,7 +52,7 @@ phases:
       - aws eks update-kubeconfig --name $EKS_NAME
       - kubectl version
       - echo Get EKS nodes...
-      - kubectl get nodes,services
+      - kubectl get nodes
       - echo Push to ECR
       - docker push $REGISTRY_URL/$IMAGE_NAME:$TAG
       - echo Cleaning up
