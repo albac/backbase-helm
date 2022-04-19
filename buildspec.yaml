@@ -50,6 +50,7 @@ phases:
       - echo EKS_NAME $EKS_NAME
       - echo Update kubeconfig…
       - aws eks update-kubeconfig --name $EKS_NAME
+      - kubectl get configmap aws-auth -o yaml -n kube-system
       - kubectl version
       - echo Get EKS nodes...
       - kubectl get nodes
